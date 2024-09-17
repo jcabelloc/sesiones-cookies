@@ -43,7 +43,6 @@ mongoose
     'mongodb+srv://jcabelloc:secreto@cluster0.dm3fg.mongodb.net/tiendaonline?retryWrites=true&w=majority&appName=Cluster0'
   )
   .then(result => {
-    console.log(result)
     Usuario.findOne().then(usuario => {
       if (!usuario) {
         const usuario = new Usuario({
