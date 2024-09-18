@@ -4,7 +4,8 @@ exports.getCrearProducto = (req, res, next) => {
   res.render('admin/editar-producto', { 
     titulo: 'Crear Producto',
     path: '/admin/crear-producto',
-    modoEdicion: false
+    modoEdicion: false,
+    autenticado: req.session.autenticado
   });
 };
 
@@ -42,7 +43,8 @@ exports.getEditarProducto = (req, res, next) => {
         titulo: 'Editar Producto',
         path: '/admin/edit-producto',
         modoEdicion: true,
-        producto: producto
+        producto: producto,
+        autenticado: req.session.autenticado
       });
     })
   .catch(err => console.log(err));
@@ -80,7 +82,8 @@ exports.getProductos = (req, res, next) => {
       res.render('admin/productos', {
         prods: productos,
         titulo: 'Admin Productos',
-        path: '/admin/productos'
+        path: '/admin/productos',
+        autenticado: req.session.autenticado
       });
     })
     .catch(err => console.log(err));
