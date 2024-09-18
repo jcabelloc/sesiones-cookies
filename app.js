@@ -5,9 +5,11 @@ const express = require('express');
 const raizDir = require('./utils/path');
 
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose');
+const session = require('express-session');
+
 
 const errorController = require('./controllers/error');
-const mongoose = require('mongoose');
 const Usuario = require('./models/usuario');
 
 
@@ -23,6 +25,7 @@ app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(raizDir, 'public')));
+app.use(session({ secret: 'algo muy secreto', resave: false, saveUninitialized: false }));
 
 
 app.use((req, res, next) => {
